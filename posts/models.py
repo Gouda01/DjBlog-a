@@ -13,6 +13,7 @@ class Post (models.Model):
     publish_date = models.DateTimeField(default=timezone.now)
     
     tags = TaggableManager()
+    image = models.ImageField(upload_to='post')
 
     def __str__(self):
         return self.title
