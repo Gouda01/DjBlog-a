@@ -19,9 +19,14 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from posts.views import post_list,post_details
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    #Posts Url
+    path('posts/', post_list),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

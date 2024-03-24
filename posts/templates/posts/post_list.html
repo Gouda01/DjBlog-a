@@ -1,0 +1,9 @@
+
+<h4>Blog :</h4>
+{% for post in object %}
+    <ul>
+        <li>{{ post }} - {{ post.publish_date }}</li>
+    </ul>
+{% endfor %}
+    
+
