@@ -13,5 +13,11 @@ def post_list(request):
     }
     return render(request,'posts/post_list.html', context)
 
-def post_details():
-    pass
+
+def post_details(request,pk):
+    data = Post.objects.get(id = pk)
+    context = {
+        'post' : data
+    }
+
+    return render(request,'posts/post_detail.html',context)

@@ -27,6 +27,7 @@ urlpatterns = [
 
     #Posts Url
     path('posts/', post_list),
+    path('posts/<int:pk>', post_details),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
