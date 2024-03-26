@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .models import Post
+from .models import Post, Comment
 from .forms import PostForm
 
 
@@ -19,8 +19,11 @@ def post_list(request):
 
 def post_details(request,pk):
     data = Post.objects.get(id = pk)
+    comments = Comment.objects.filter(post=data)
     context = {
-        'post' : data
+        'post' : data,
+        'comments' : comments,
+
     }
 
     return render(request,'posts/post_detail.html',context)
@@ -59,6 +62,20 @@ def delete_post(request, pk):
 
 
 
+
+
+
+
+
+
+
+
+
+
+'''
+
+
+
 # Class Based View CBV :
 
 class PostList (ListView):
@@ -83,3 +100,6 @@ class DeletePost (DeleteView):
     model = Post
     success_url = '/posts/'
     # template_name = 'posts/post_delete.html'
+
+
+'''
