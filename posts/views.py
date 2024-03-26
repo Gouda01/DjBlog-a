@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .models import Post, Comment
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 
 
@@ -20,9 +20,19 @@ def post_list(request):
 def post_details(request,pk):
     data = Post.objects.get(id = pk)
     comments = Comment.objects.filter(post=data)
+    if request.method == 'POST' :
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            myform = form.save(commit=False)
+            myform.post = data
+            myform.save()
+    else :
+        form = CommentForm()
+
     context = {
         'post' : data,
         'comments' : comments,
+        'form' : form,
 
     }
 
