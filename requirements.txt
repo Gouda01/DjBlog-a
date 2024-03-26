@@ -1,6 +1,7 @@
 asgiref==3.8.1
 bleach==6.1.0
 Django==4.2
+django-bootstrap5==23.4
 django-extensions==3.2.3
 django-summernote==0.8.20.0
 django-taggit==5.0.1
