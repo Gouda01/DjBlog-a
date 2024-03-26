@@ -19,19 +19,23 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from posts.views import post_list,post_details,create_post, PostList,PostDetail
+from posts import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     #Posts Url
-    # path('posts/', post_list),
-    path('posts/new', create_post),
-    # path('posts/<int:pk>', post_details),
+    # path('posts/', views.post_list),
+    # path('posts/new', views.create_post),
+    # path('posts/<int:pk>', views.post_details),
+    # path('posts/<int:pk>/edit', views.edit_post),
+    # path('posts/<int:pk>/delete', views.delete_post),
 
-    path('posts/', PostList.as_view()),
-    path('posts/<int:pk>', PostDetail.as_view()),
+    # Class Based View Urls :
+    path('posts/', views.PostList.as_view()),
+    path('posts/new', views.AddPost.as_view()),
+    path('posts/<int:pk>', views.PostDetail.as_view()),
 
     path('summernote/', include('django_summernote.urls')),
 ]

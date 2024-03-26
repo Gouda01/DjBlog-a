@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .models import Post
 from .forms import PostForm
@@ -37,14 +37,38 @@ def create_post (request) :
             return redirect('/posts/')
     else :
         form = PostForm()
+    return render (request,'posts/post_form.html', {'form':form})
+
+def edit_post (request,pk) :
+    post = Post.objects.get(id=pk)
+    if request.method == 'POST' :
+        form = PostForm(request.POST,request.FILES, instance=post)
+        if form.is_valid() :
+            myform = form.save(commit=False)
+            myform.author = request.user
+            myform.save()
+            return redirect('/posts/')
+    else :
+        form = PostForm(instance=post)
     return render (request,'posts/new.html', {'form':form})
 
+def delete_post(request, pk):
+    post = Post.objects.get(id=pk)
+    post.delete()
+    return redirect('/posts/')
 
 
 
-class PostList(ListView):
+# Class Based View CBV :
+
+class PostList (ListView):
     model = Post
 
 
-class PostDetail(DetailView):
+class PostDetail (DetailView):
     model = Post
+
+class AddPost (CreateView) :
+    model = Post
+    fields = '__all__'
+    success_url = '/posts/'
