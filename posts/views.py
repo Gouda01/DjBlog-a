@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 
 from .models import Post
 
@@ -9,7 +10,7 @@ def post_list(request):
 
     data = Post.objects.all()
     context = {
-        'object' : data
+        'object_list' : data
     }
     return render(request,'posts/post_list.html', context)
 
@@ -21,3 +22,12 @@ def post_details(request,pk):
     }
 
     return render(request,'posts/post_detail.html',context)
+
+
+
+class PostList(ListView):
+    model = Post
+
+
+class PostDetail(DetailView):
+    model = Post

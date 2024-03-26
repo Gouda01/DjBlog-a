@@ -1,6 +1,6 @@
 
 <h4>Blog :</h4>
-{% for post in object %}
+{% for post in object_list %}
     <ul>
         <li>{{ post }} - {{ post.publish_date }} - <a href="/posts/{{ post.id }}">Post detail</a> </li>
     </ul>
