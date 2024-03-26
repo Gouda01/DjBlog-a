@@ -36,6 +36,7 @@ urlpatterns = [
     path('posts/', views.PostList.as_view()),
     path('posts/new', views.AddPost.as_view()),
     path('posts/<int:pk>', views.PostDetail.as_view()),
+    path('posts/<int:pk>/edit', views.EditPost.as_view()),
 
     path('summernote/', include('django_summernote.urls')),
 ]

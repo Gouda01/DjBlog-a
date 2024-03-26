@@ -50,7 +50,7 @@ def edit_post (request,pk) :
             return redirect('/posts/')
     else :
         form = PostForm(instance=post)
-    return render (request,'posts/new.html', {'form':form})
+    return render (request,'posts/post_edit.html', {'form':form})
 
 def delete_post(request, pk):
     post = Post.objects.get(id=pk)
@@ -72,3 +72,9 @@ class AddPost (CreateView) :
     model = Post
     fields = '__all__'
     success_url = '/posts/'
+
+class EditPost (UpdateView) :
+    model = Post
+    fields = '__all__'
+    success_url = '/posts/'
+    template_name = 'posts/post_edit.html'
