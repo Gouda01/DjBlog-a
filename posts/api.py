@@ -11,3 +11,11 @@ def post_list_api (request):
     data = PostSerializers(posts, many=True).data
 
     return Response({'data':data})
+
+
+@api_view(['GET'])
+def post_detail_api (request, pk):
+    post = Post.objects.get(id = pk)
+    data = PostSerializers(post).data
+
+    return Response ({'data': data})
