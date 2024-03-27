@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from posts import views
+from posts.api import post_list_api
 
 
 urlpatterns = [
@@ -27,10 +28,10 @@ urlpatterns = [
 
     #Posts Url
     path('posts/', views.post_list),
-    path('posts/new', views.create_post),
-    path('posts/<int:pk>', views.post_details),
-    path('posts/<int:pk>/edit', views.edit_post),
-    path('posts/<int:pk>/delete', views.delete_post),
+    path('posts/new/', views.create_post),
+    path('posts/<int:pk>/', views.post_details),
+    path('posts/<int:pk>/edit/', views.edit_post),
+    path('posts/<int:pk>/delete/', views.delete_post),
 
     # Class Based View Urls :
     # path('posts/', views.PostList.as_view()),
@@ -40,6 +41,12 @@ urlpatterns = [
     # path('posts/<int:pk>/delete', views.DeletePost.as_view()),
 
     path('summernote/', include('django_summernote.urls')),
+
+
+
+    # Api Urls :
+    path('posts/api/', post_list_api)
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
