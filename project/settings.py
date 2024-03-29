@@ -40,11 +40,12 @@ INSTALLED_APPS = [
     
     
     # My Packages :
-    'taggit',
-    'django_extensions',
-    'django_summernote',
-    'django_bootstrap5',
-    'rest_framework',
+    'taggit',               # To make Tags
+    'django_extensions',    # To make database table as pic
+    'django_summernote',    # To make text form  in good view
+    'django_bootstrap5',    # To make the forms CBV formated in bootstrap
+    'rest_framework',       # To make api
+    'drf_yasg',             # To make documentation for api
 
 
     # My Apps :
