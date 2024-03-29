@@ -5,4 +5,5 @@ from .models import Post
 class PostSerializers(serializers.ModelSerializer):
     class Meta :
         model = Post
-        exclude = ('author',)
+        fields = '__all__'
+        # exclude = ('author',)

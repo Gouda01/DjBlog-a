@@ -20,7 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from posts import views
-from posts.api import post_list_api, post_detail_api
+# from posts.api import post_list_api, post_detail_api
+from posts.api import PostListApi, PostDetailApi
 
 
 urlpatterns = [
@@ -45,8 +46,10 @@ urlpatterns = [
 
 
     # Api Urls :
-    path('posts/api/', post_list_api),
-    path('posts/api/<int:pk>', post_detail_api),
+    # path('posts/api/', post_list_api),
+    path('posts/api' , PostListApi.as_view()),
+    # path('posts/api/<int:pk>', post_detail_api),
+    path('posts/api/<int:pk>', PostDetailApi.as_view()),
 
 ]
 
