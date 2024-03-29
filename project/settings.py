@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_summernote',    # To make text form  in good view
     'django_bootstrap5',    # To make the forms CBV formated in bootstrap
     'rest_framework',       # To make api
+    'django_filters',       # To make filter and search in api 'Look in Setting too'
     'drf_yasg',             # To make documentation for api
 
 
@@ -61,6 +62,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+# To make filter and search in api :
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
 
 ROOT_URLCONF = 'project.urls'
 
